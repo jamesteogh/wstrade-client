@@ -20,10 +20,14 @@ const App = () => {
         <div className="App">
             <Header />
             <Routes>
-                <Route exact path="/" component={ StockSummaryPage }/>
+                <Route path='/' element={<StockSummaryPage />} />
             </Routes>
         </div>
             
+    )
+}
+
+export default App
 
         // <Container maxWidth="lg">
         //     <AppBar position="static" color="inherit">
@@ -45,7 +49,3 @@ const App = () => {
         //         </Container>
         //     </Grow>
         // </Container>   
-    )
-}
-
-export default App
