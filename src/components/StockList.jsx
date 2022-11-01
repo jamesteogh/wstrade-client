@@ -28,11 +28,15 @@ const StockList = () => {
     },[])
 
   return (
-    <div>Stock List</div>
+    <div>Stock List
+    </div>
   )
 }
 
 export default StockList
+
+// `Result ${response.data}`
+
 
 // const StockList = () => {
 //     const [stocks, setStocks] = useState([]);

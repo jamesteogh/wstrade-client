@@ -6,7 +6,7 @@ const StockSummaryPage = () => {
   return (
     <div>
       <AddStock />
-      <StockList />
+      {/* <StockList /> */}
     </div>
   )
 }
