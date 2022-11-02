@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import './styles.css';
 import Chart from 'chart.js/auto';
 import moment from 'moment';
+import Button from 'react-bootstrap/Button'
 
 
 const StockDetail = () => {
@@ -17,7 +18,6 @@ const StockDetail = () => {
   const [monthArray, setMonthArray] = useState([]);
   const [hourArray, setHourArray] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('1h');
-
 
   const symbol = route.symbol.slice(1, route.symbol.length);
   const filterData = () => {
@@ -214,8 +214,13 @@ const StockDetail = () => {
     getChartData();
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div className='stock-detail-container'>
+      <Button onClick={() => navigate('/')} style={{ width: 120 }}>
+        Back
+      </Button>
       {stockDetail ? (
         <div className='symbol-header'>{stockDetail.symbol}</div>
       ) : null}

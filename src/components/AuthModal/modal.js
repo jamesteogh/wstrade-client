@@ -31,7 +31,7 @@ export default function AuthModal({ show, handleClose, modalName }) {
         };
 
         const res = await axios.post(
-            'http://localhost:5000/api/v1/auth/login',
+            `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`,
             obj
         );
         console.log(res.data);
@@ -55,7 +55,7 @@ export default function AuthModal({ show, handleClose, modalName }) {
         };
 
         const res = await axios.post(
-        'http://localhost:5000/api/v1/auth/register',
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`,
         obj
         );
 

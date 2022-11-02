@@ -72,7 +72,7 @@ const AddStock = () => {
 
         if (user) {
           const mongoRes = await axios.post(
-            'http://localhost:5000/api/v1/posts',
+            `${process.env.REACT_APP_BACKEND_URL}/api/v1/posts`,
             {
               ...data,
               userId: user._id,
@@ -94,7 +94,7 @@ const AddStock = () => {
   const deleteStock = async (symbol) => {
     if (user) {
       const res = await axios.delete(
-        `http://localhost:5000/api/v1/posts/?symbol=${symbol}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/posts/?symbol=${symbol}`
       );
       if (res.data.status === 200) {
         return getAllStocks();
@@ -107,7 +107,7 @@ const AddStock = () => {
 
   const getAllStocks = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/v1/posts?userId=${user._id}`
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/posts?userId=${user._id}`
     );
     console.log(res.data);
     if (res.data.data) {
