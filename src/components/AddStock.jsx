@@ -25,9 +25,7 @@ const AddStock = () => {
     'lmt',
     'ilmn',
     'mcd',
-    'jnj',
-    'spx',
-    'qqq'
+    'jnj' 
   ]);
 
   const [stocks, setStocks] = useState([]);
