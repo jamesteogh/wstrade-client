@@ -24,10 +24,8 @@ const Header = () => {
     localStorage.setItem('user',null)
     localStorage.setItem('token',null);
 
- 
     window.location.href = '/'
   }
-
 
   return (
     <div className='header-container'>
@@ -35,18 +33,17 @@ const Header = () => {
         {user ?  <div className="auth-container">
         <div className="my-btn" style={{width:300}} onClick={()=>onLogout()}>
           <span style={{color:'tomato',marginRight:10}}>{user.name}</span>
-         Logout
+          Logout
         </div>
         
         </div> :   <div className="auth-container">
         <div className="my-btn" onClick={()=>onClickAuthBtn('Login')}>
-         Login
+          Login
         </div>
         <div className="my-btn" onClick={()=>onClickAuthBtn('Signup')}>
           Sign up
         </div>
         </div>}
-       
         <AuthModal modalName={modalName} handleClose={handleClose} show={openModal} />
     </div>
   )
