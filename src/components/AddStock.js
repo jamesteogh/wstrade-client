@@ -27,7 +27,14 @@ const AddStock = () => {
     'ilmn',
     'mcd',
     'jnj',
-    'ba'
+    'ba',
+    'yum',
+    'yumc',
+    'unh',
+    'crm',
+    'cme',
+    'tsm',
+    'nvda',
   ]);
 
   const [stocks, setStocks] = useState([]);
@@ -136,7 +143,7 @@ const AddStock = () => {
             <div className='stock-symbol'>{data.symbol}</div>
             <div className='stock-shortName'>{data.shortName}</div>
           </div>
-          <div style={{ display: 'flex', marginRight: 80 }}>
+          <div style={{ display: 'flex', marginRight: 80 }} onClick={() => onClickStock(data.symbol)}>
             <div className='stock-regular-market-container'>
               <div className='stock-market-change-title'>
                 {data.regularMarketPrice.raw}

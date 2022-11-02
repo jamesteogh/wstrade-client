@@ -80,7 +80,6 @@ const StockDetail = () => {
 
   const onSelectFilter = async (filterName) => {
     //    setLoading(true);
-
     setSelectedFilter(filterName);
   };
 
@@ -99,12 +98,9 @@ const StockDetail = () => {
 
               fill: true,
               backgroundColor: 'rgba(174, 305, 105, 0.4)',
-
               // borderWidth: 1,
             },
           ],
-
-          //
           // borderColor: 'orange',
         },
 
@@ -321,9 +317,7 @@ const StockDetail = () => {
         </div>
       )}
     </div>
-
-   
-  )
-}
+  );
+};
 
 export default StockDetail

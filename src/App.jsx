@@ -1,13 +1,13 @@
 import React from 'react'
-import { Grid, Container, AppBar, Typography, Grow } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 // import { ToastContainer } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'react-toastify/dist/ReactToastify.css';
 
-import StockDetailPage from './Pages/StockDetailPage';
-import StockSummaryPage from './Pages/StockSummaryPage';
+import StockDetail from './components/StockDetail/StockDetail';
+import AddStock from './components/AddStock';
+
 import Header from './components/Header';
 import "./App.css";
 
@@ -16,7 +16,8 @@ const App = () => {
         <div className="App">
             <Header />
             <Routes>
-                <Route path='/' element={<StockSummaryPage />} />
+                <Route path='/' element={<AddStock />} />
+                <Route exact path='/stock-detail:symbol' element={<StockDetail />} />
             </Routes>
         </div>
             
