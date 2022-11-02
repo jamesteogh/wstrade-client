@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react'
-import api from "../apis/api"
 import axios from "axios";
 import { WatchListContext } from '../context/watchListContext';
 

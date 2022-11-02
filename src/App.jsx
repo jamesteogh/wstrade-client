@@ -6,10 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Posts from './components/Posts/Posts';
-import Form from './components/Form/Forms';
-import StockDetail from './components/StockDetail/StocklDetail';
-
 import StockDetailPage from './Pages/StockDetailPage';
 import StockSummaryPage from './Pages/StockSummaryPage';
 import Header from './components/Header';
