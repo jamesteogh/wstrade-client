@@ -4,6 +4,7 @@ import { Select } from 'antd';
 import axios from 'axios';
 
 import { LoadingOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 const AddStock = () => {
@@ -25,11 +26,14 @@ const AddStock = () => {
     'lmt',
     'ilmn',
     'mcd',
-    'jnj' 
+    'jnj',
+    'ba'
   ]);
 
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  let user = JSON.parse(localStorage.getItem('user'));
 
   const handleChange = (value) => {
     const options = {
@@ -48,11 +52,11 @@ const AddStock = () => {
     setLoading(true);
     axios
       .request(options)
-      .then(function (response) {
+      .then(async function (response) {
         setLoading(false);
         const data = {
           symbol: response.data.price.symbol,
-          currency: response.data.price.currency,
+          // currency: response.data.price.currency,
           shortName: response.data.price.shortName,
           regularMarketChange: response.data.price.regularMarketChange,
           regularMarketPrice: response.data.price.regularMarketPrice,
@@ -66,57 +70,85 @@ const AddStock = () => {
           }
         }
 
+        if (user) {
+          const mongoRes = await axios.post(
+            'http://localhost:5000/api/v1/posts',
+            {
+              ...data,
+              userId: user._id,
+            }
+          );
+          console.log(mongoRes.data);
+          return setStocks([...stocks, mongoRes.data.data]);
+        }
         setStocks([...stocks, data]);
         console.log(response.data);
       })
+
       .catch(function (error) {
         console.error(error);
         setLoading(false);
       });
   };
 
-  const deleteStock = (symbol) => {
+  const deleteStock = async (symbol) => {
+    if (user) {
+      const res = await axios.delete(
+        `http://localhost:5000/api/v1/posts/?symbol=${symbol}`
+      );
+      if (res.data.status === 200) {
+        return getAllStocks();
+      }
+    };
     let filterStock = stocks.filter((val) => val.symbol !== symbol);
 
     setStocks(filterStock);
   };
 
-  const getData = async () => {
+  const getAllStocks = async () => {
     const res = await axios.get(
-      `https://api.twelvedata.com/time_series?interval=1month&apikey=03123b25aa2f4028818b13c9ea66f3a2&symbol=googl`
+      `http://localhost:5000/api/v1/posts?userId=${user._id}`
     );
-
     console.log(res.data);
+    if (res.data.data) {
+      //  setStocks([]);
+      setStocks(res.data.data);
+    }
   };
 
   useEffect(() => {
-    getData();
+    if (user) {
+      getAllStocks();
+    }
   }, []);
+
+  const navigation = useNavigate();
+
+  const onClickStock = (symbol) => {
+    navigation(`/stock-detail-${symbol}`);
+  };
 
   const StockCard = ({ data }) => {
     return (
       <div className='stock-card'>
-        <div className='stock-main'>
-          <div className='stock-symbol'>{data.symbol}</div>
-          <div className='stock-shortName'>{data.shortName}</div>
-        </div>
-        <div style={{ display: 'flex', marginRight: 80 }}>
-          <div className='stock-regular-market-container'>
-            <div className='stock-market-change-title'>
-              {data.regularMarketPrice.raw}
-            </div>
-            <div
-              className='stock-market-change'
-              style={{
-                color: data.regularMarketChange.raw < 0 ? 'red' : 'green',
-              }}
-            >
-              {data.regularMarketChange.raw < 0
-                ? ` ${data.regularMarketChange.raw.toFixed(2)}`
-                : `+${data.regularMarketChange.raw.toFixed(2)}`}
+        <div onClick={() => onClickStock(data.symbol)} style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+          <div className='stock-main'>
+            <div className='stock-symbol'>{data.symbol}</div>
+            <div className='stock-shortName'>{data.shortName}</div>
+          </div>
+          <div style={{ display: 'flex', marginRight: 80 }}>
+            <div className='stock-regular-market-container'>
+              <div className='stock-market-change-title'>
+                {data.regularMarketPrice.raw}
+              </div>
+              <div className='stock-market-change' style={{ color: data.regularMarketChange.raw < 0 ? 'red' : 'green', }}>
+                {data.regularMarketChange.raw < 0
+                  ? ` ${data.regularMarketChange.raw.toFixed(2)}`
+                  : `+${data.regularMarketChange.raw.toFixed(2)}`}
+              </div>
             </div>
           </div>
-        </div>
+        </div>  
         <div onClick={() => deleteStock(data.symbol)} className='delete-stock'>
           X
         </div>
@@ -137,7 +169,7 @@ const AddStock = () => {
           onChange={handleChange}
         >
           {watchList.map((val, i) => (
-            <Option value={val}>{val.toUpperCase()}</Option>
+            <Option key={i} value={val}>{val.toUpperCase()}</Option>
           ))}
         </Select>
       </div>
@@ -152,7 +184,7 @@ const AddStock = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            margin: '0 10px',
+            margin: '10px',
           }}
         >
           {' '}
