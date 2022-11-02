@@ -10,10 +10,24 @@ const AddStock = () => {
   const [watchList, setWatchList] = useState([
     'googl',
     'aapl',
+    'tsla',
     'meta',
-    'mmtlp',
+    'msft',
+    'amzn',
+    'adbe',
+    'baba',
     'bac',
-    'jpm'
+    'jpm',
+    'bkng',
+    'dis',
+    'ma',
+    'v',
+    'lmt',
+    'ilmn',
+    'mcd',
+    'jnj',
+    'spx',
+    'qqq'
   ]);
 
   const [stocks, setStocks] = useState([]);
