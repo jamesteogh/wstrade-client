@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import './styles.css';
@@ -47,7 +47,12 @@ const StockDetail = () => {
     // setLoading(true);
     axios
       .request(options)
-      .then(function (response) {
+      .then(async function (response) {
+        const res = await axios.get(
+          `https://api.twelvedata.com/logo?symbol=${symbol}&apikey=03123b25aa2f4028818b13c9ea66f3a2`
+        );
+
+
         setLoading(false);
         const data = {
           symbol: response.data.price.symbol,
@@ -58,8 +63,10 @@ const StockDetail = () => {
           volume24Hr: response.data.price.regularMarketVolume,
           currentPrice: response.data.price.regularMarketPrice,
           percentChangePrice: response.data.price.regularMarketChangePercent,
+          logo: res.data.url,
         };
 
+        console.log(res.data);
         setStockDetail(data);
 
         //console.log(response.data);
@@ -210,13 +217,8 @@ const StockDetail = () => {
     getChartData();
   }, []);
 
-  const navigate = useNavigate();
-
   return (
     <div className='stock-detail-container'>
-      <Button onClick={() => navigate('/')} style={{ width: 120 }}>
-        Back
-      </Button>
       {stockDetail ? (
         <div
           style={{
@@ -228,6 +230,14 @@ const StockDetail = () => {
           }}
         >
           <div className='symbol-header'>{stockDetail.symbol}</div>
+            <div className='logo' style={{
+                // width: 80,
+                height: 46,
+                borderRadius: 35,
+                backgroundColor: '#f8f8f8',
+              }}>
+              <img src={stockDetail.logo} style={{ width: '100%', height: '100%' }}/>
+            </div>
           <div
             style={{
               borderBottom: 0,
@@ -237,7 +247,7 @@ const StockDetail = () => {
             }}
           >
             <label>Current Price</label>
-            <div className='value'>{stockDetail.currentPrice.raw}</div>
+            <div className='value'>${stockDetail.currentPrice.raw}</div>
           </div>
         </div>
       ) : null}
@@ -301,11 +311,11 @@ const StockDetail = () => {
           </div>
           <div className='info-box'>
             <label>High 24h</label>
-            <div className='value'>{stockDetail.dayHigh.fmt}</div>
+            <div className='value'>${stockDetail.dayHigh.fmt}</div>
           </div>
           <div className='info-box'>
             <label>Low 24h</label>
-            <div className='value'>{stockDetail.dayLow.fmt}</div>
+            <div className='value'>${stockDetail.dayLow.fmt}</div>
           </div>
           <div className='info-box'>
             <label>Volume 24h</label>

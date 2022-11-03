@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-const StockDetailPage = () => {
-  return (
-    <div>StockDetailPage</div>
-  )
-}
+// const StockDetailPage = () => {
+//   return (
+//     <div>StockDetailPage</div>
+//   )
+// }
 
-export default StockDetailPage
+// export default StockDetailPage

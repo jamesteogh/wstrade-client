@@ -151,7 +151,7 @@ const AddStock = () => {
           <div style={{ display: 'flex', marginRight: 80 }} onClick={() => onClickStock(data.symbol)}>
             <div className='stock-regular-market-container'>
               <div className='stock-market-change-title'>
-                {data.regularMarketPrice.raw}
+                ${data.regularMarketPrice.raw}
               </div>
               <div className='stock-market-change' style={{ color: data.regularMarketChange.raw < 0 ? 'red' : 'green', }}>
                 {data.regularMarketChange.raw < 0

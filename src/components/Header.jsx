@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { toast } from "react-toastify";
-import {Button}from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 import AuthModal from './AuthModal/modal';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   
@@ -19,8 +20,6 @@ const Header = () => {
 
   let user = JSON.parse(localStorage.getItem('user'));
 
-  let token = localStorage.getItem('token');
-
   const onLogout = ()=>{
     toast.success(`Logout Successful!`)
     localStorage.setItem('user',null)
@@ -29,9 +28,17 @@ const Header = () => {
     window.location.href = '/'
   }
 
+  const navigate = useNavigate();
+
   return (
     <div className='header-container'>
-      <h1 className="text-center mt-3 mb-4">Wall Street Trade <i className="fa-solid fa-arrow-trend-up"></i></h1>
+      <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+        {window.location.pathname!=='/' ? <Button onClick={() => navigate('/')} style={{ width: 120,height:40,marginRight:10 }}>
+          Watchlist
+        </Button>:null}
+          <h1 className="text-center mt-3 mb-4">Wall Street Trade <i className="fa-solid fa-arrow-trend-up"></i></h1>
+      </div>
+
       {user ? ( 
         <div className="auth-container">
           <div className="my-btn" style={{width:300}} onClick={()=>onLogout()}>
