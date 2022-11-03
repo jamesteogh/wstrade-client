@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import { toast } from "react-toastify";
 export default function AuthModal({ show, handleClose, modalName }) {
     const [state, setState] = useState({
         email: '',
@@ -17,11 +18,13 @@ export default function AuthModal({ show, handleClose, modalName }) {
 
     const onSubmit = async () => {
         if (!state.email) {
-        return alert('email is required');
+        toast.error('Email is required');
+        return
         }
 
         if (!state.password) {
-        return alert('password is required');
+        toast.error('Password is required');
+        return
         }
 
         if (modalName === 'Login') {
@@ -30,19 +33,21 @@ export default function AuthModal({ show, handleClose, modalName }) {
             password: state.password.trim(),
         };
 
-        const res = await axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`,
-            obj
-        );
-        console.log(res.data);
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`, obj);
+            console.log(res.data);
+
         if (res.data.success) {
             localStorage.setItem('user', JSON.stringify(res.data.data));
             localStorage.setItem('token', JSON.stringify(res.data.token));
             window.location.reload();
+            toast.success(`Login Successful!`)
+            return
         }
 
         if (res.data.errors) {
+            toast.error("Unable to login. Please try again later.")
             setState({ ...state, error: res.data.errors });
+            
         }
 
         return console.log(obj);
@@ -54,10 +59,7 @@ export default function AuthModal({ show, handleClose, modalName }) {
         name: state.name,
         };
 
-        const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`,
-        obj
-        );
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`, obj);
 
         if (res.data.success) {
         localStorage.setItem('user', JSON.stringify(res.data.data));
@@ -151,23 +153,16 @@ export default function AuthModal({ show, handleClose, modalName }) {
             </div>
         </Modal.Body>
         <Modal.Footer>
-            <Button
-            variant='secondary'
-            onClick={() => {
-                handleClose();
-                setState({
-                email: '',
-                password: '',
-                name: '',
-                });
-            }}
-            >
-            Close
+            <Button variant='secondary' onClick={() => { handleClose(); setState({ email: '', password: '', name: '',});}}>
+                Close
             </Button>
             <Button variant='primary' onClick={onSubmit}>
-            {modalName}
+                {modalName}
             </Button>
         </Modal.Footer>
         </Modal>
     );
 }
+
+
+        // toast.success(`Login Successful!`) 

@@ -6,28 +6,11 @@
 }
 
 body {
-background-color: white;
+background-color: #95E1D3;
 }
 
 ul {
 list-style: none;
-}
-
-.coinlist-image {
-width: 50px;
-}
-
-.coinlist-item {
-display: flex;
-}
-
-.coinsummary {
-border-color: white !important;
-border-style: outset !important;
-}
-
-.coin-data-category {
-font-size: 10px;
 }
 
 .delete-icon {
@@ -36,6 +19,3 @@ position: absolute;
 right: 6px;
 }
 
-.coin:hover .delete-icon {
-display: block;
-}

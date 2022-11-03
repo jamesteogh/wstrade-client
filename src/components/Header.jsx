@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from "react-toastify";
 import {Button}from 'react-bootstrap';
 import AuthModal from './AuthModal/modal';
 
@@ -21,6 +22,7 @@ const Header = () => {
   let token = localStorage.getItem('token');
 
   const onLogout = ()=>{
+    toast.success(`Logout Successful!`)
     localStorage.setItem('user',null)
     localStorage.setItem('token',null);
 
@@ -29,7 +31,7 @@ const Header = () => {
 
   return (
     <div className='header-container'>
-      <h1 className="text-center text-danger mt-3 mb-4">Wall Street Trade</h1>
+      <h1 className="text-center mt-3 mb-4">Wall Street Trade</h1>
       {user ? ( 
         <div className="auth-container">
           <div className="my-btn" style={{width:300}} onClick={()=>onLogout()}>

@@ -1,8 +1,8 @@
 .add-stock-container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     min-height: 60vh;
-    background-color: #f4f4f4;
+    background-color: #EAFFD0;
     padding: 10px;
 }
 
@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
+    background-color: #F38181;
 }
 
 .stock-card {
@@ -21,7 +21,7 @@
     justify-content: space-between;
     align-items: center;
     padding:10px ;
-    background-color: #fff;
+    background-color: #FCE38A;
     margin: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.1);
@@ -38,7 +38,7 @@
 }
 
 .stock-shortName {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     color: grey;
 }
@@ -79,7 +79,7 @@
 
 .delete-stock:hover {
     background-color: red;
-    color: #fff;
+    color: white;
 }
 
 .stock-regular-market-container {

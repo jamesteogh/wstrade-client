@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-// import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,6 +19,7 @@ const App = () => {
                 <Route path='/' element={<AddStock />} />
                 <Route exact path='/stock-detail:symbol' element={<StockDetail />} />
             </Routes>
+            <ToastContainer />
         </div>
             
     )
