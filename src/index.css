@@ -34,5 +34,11 @@
     width: 100px;
     font-weight: bold;
     cursor: pointer;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    font-size: 20px;
+}
+
+.my-btn:hover {
+    /* background-color: #F38181; */
+    color: white;
 }

@@ -140,8 +140,12 @@ const AddStock = () => {
       <div className='stock-card'>
         <div onClick={() => onClickStock(data.symbol)} style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
           <div className='stock-main'>
-            <div className='stock-symbol'>{data.symbol}</div>
-            <div className='stock-shortName'>{data.shortName}</div>
+            <div className='stock-symbol'>
+              {data.symbol}
+            </div>
+            <div className='stock-shortName'>
+              {data.shortName}
+            </div>
           </div>
           <div style={{ display: 'flex', marginRight: 80 }} onClick={() => onClickStock(data.symbol)}>
             <div className='stock-regular-market-container'>

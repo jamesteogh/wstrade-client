@@ -35,7 +35,7 @@ const Header = () => {
       {user ? ( 
         <div className="auth-container">
           <div className="my-btn" style={{width:300}} onClick={()=>onLogout()}>
-            <span style={{color:'tomato',marginRight:10}}>{user.name}</span>
+            <span style={{color:'black',marginRight:10}}>{user.name}</span>
             Logout
           </div>
         </div> 
