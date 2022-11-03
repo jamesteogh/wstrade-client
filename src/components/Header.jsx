@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <div className='header-container'>
-      <h1 className="text-center mt-3 mb-4">Wall Street Trade</h1>
+      <h1 className="text-center mt-3 mb-4">Wall Street Trade <i className="fa-solid fa-arrow-trend-up"></i></h1>
       {user ? ( 
         <div className="auth-container">
           <div className="my-btn" style={{width:300}} onClick={()=>onLogout()}>

@@ -147,6 +147,7 @@ const AddStock = () => {
               {data.shortName}
             </div>
           </div>
+          
           <div style={{ display: 'flex', marginRight: 80 }} onClick={() => onClickStock(data.symbol)}>
             <div className='stock-regular-market-container'>
               <div className='stock-market-change-title'>
@@ -207,3 +208,12 @@ const AddStock = () => {
 };
 
 export default AddStock;
+
+// stock logo api
+// https://api.twelvedata.com/logo?symbol=msft&apikey=03123b25aa2f4028818b13c9ea66f3a2
+// {
+//   "meta": {
+//   "symbol": "MSFT"
+//   },
+//   "url": "https://api.twelvedata.com/logo/microsoft.com"
+//   }

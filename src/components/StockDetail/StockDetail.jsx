@@ -321,3 +321,15 @@ const StockDetail = () => {
 };
 
 export default StockDetail
+
+// stock logo api
+// https://api.twelvedata.com/logo?symbol=msft&apikey=03123b25aa2f4028818b13c9ea66f3a2
+
+// result
+
+// {
+//   "meta": {
+//   "symbol": "MSFT"
+//   },
+//   "url": "https://api.twelvedata.com/logo/microsoft.com"
+//   }
