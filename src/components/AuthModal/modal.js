@@ -27,53 +27,56 @@ export default function AuthModal({ show, handleClose, modalName }) {
         return
         }
 
-        if (modalName === 'Login') {
-        const obj = {
-            email: state.email.toLowerCase().trim(),
-            password: state.password.trim(),
-        };
+        try{
+            if (modalName === 'Login') {
+                const obj = {
+                    email: state.email.toLowerCase().trim(),
+                    password: state.password.trim(),
+                };
+        
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`, obj);
+                    console.log(res.data);
+                if (res.data.success) {
+                    localStorage.setItem('user', JSON.stringify(res.data.data));
+                    localStorage.setItem('token', JSON.stringify(res.data.token));
+                    window.location.reload();
+                    toast.success(`Login Successful!`)
+                    return
+                }
+        
+                if (res.data.error) {
+                    toast.error("Unable to login. Please try again later.")
+                    setState({ ...state, error: res.data.error });
+                    
+                }
+        
+                return console.log(obj);
+                }
+        
+                const obj = {
+                email: state.email.toLowerCase().trim(),
+                password: state.password.trim(),
+                name: state.name,
+                };
+        
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`, obj);
+        
+                if (res.data.success) {
+                localStorage.setItem('user', JSON.stringify(res.data.data));
+                localStorage.setItem('token', JSON.stringify(res.data.token));
+                window.location.reload();
+                }
 
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`, obj);
-            console.log(res.data);
-
-        if (res.data.success) {
-            localStorage.setItem('user', JSON.stringify(res.data.data));
-            localStorage.setItem('token', JSON.stringify(res.data.token));
-            window.location.reload();
-            toast.success(`Login Successful!`)
-            return
+                if (res.data.error) {
+                    setState({ ...state, error: res.data.error });
+                }
+        } catch (err) {
+            console.log(err);
+            setState({ ...state, error: err.response.data.error[0] });
         }
 
-        if (res.data.errors) {
-            toast.error("Unable to login. Please try again later.")
-            setState({ ...state, error: res.data.errors });
-            
-        }
-
-        return console.log(obj);
-        }
-
-        const obj = {
-        email: state.email.toLowerCase().trim(),
-        password: state.password.trim(),
-        name: state.name,
-        };
-
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`, obj);
-
-        if (res.data.success) {
-        localStorage.setItem('user', JSON.stringify(res.data.data));
-        localStorage.setItem('token', JSON.stringify(res.data.token));
-        window.location.reload();
-        }
-
-        console.log(res.data);
-        if (res.data.errors) {
-        setState({ ...state, error: res.data.errors });
-        }
-
-        console.log(obj);
     };
+    
     return (
         <Modal
         show={show}

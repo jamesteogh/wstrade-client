@@ -218,7 +218,28 @@ const StockDetail = () => {
         Back
       </Button>
       {stockDetail ? (
-        <div className='symbol-header'>{stockDetail.symbol}</div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '0 10px',
+            backgroundColor: '#fff',
+            alignItems: 'center',
+          }}
+        >
+          <div className='symbol-header'>{stockDetail.symbol}</div>
+          <div
+            style={{
+              borderBottom: 0,
+              borderRight: 0,
+              display: 'flex',
+              marginRight: 20,
+            }}
+          >
+            <label>Current Price</label>
+            <div className='value'>{stockDetail.currentPrice.raw}</div>
+          </div>
+        </div>
       ) : null}
 
       <div className='chart-container'>
@@ -259,10 +280,6 @@ const StockDetail = () => {
 
       {stockDetail ? (
         <div className='stock-information'>
-          <div className='info-box'>
-            <label>Current Price</label>
-            <div className='value'>{stockDetail.currentPrice.raw}</div>
-          </div>
           <div className='info-box'>
             <label>% Change in 24h</label>
             <div
