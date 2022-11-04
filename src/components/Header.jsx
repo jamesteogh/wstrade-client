@@ -51,7 +51,7 @@ const Header = () => {
           <div className="my-btn" onClick={()=>onClickAuthBtn('Login')}>
             Login
           </div>
-          <div className="my-btn" onClick={()=>onClickAuthBtn('Signup')}>
+          <div className="my-btn" onClick={()=>onClickAuthBtn('Sign up')}>
             Sign up
           </div>
         </div>)}
