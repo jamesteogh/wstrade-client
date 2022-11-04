@@ -49,7 +49,7 @@ const StockDetail = () => {
       .request(options)
       .then(async function (response) {
         const res = await axios.get(
-          `https://api.twelvedata.com/logo?symbol=${symbol}&apikey=03123b25aa2f4028818b13c9ea66f3a2`
+          `https://api.twelvedata.com/logo?symbol=${symbol}&apikey=${process.env.TWELVEDATA_TOKEN}`
         );
 
 
@@ -138,17 +138,14 @@ const StockDetail = () => {
 
     try {
       const monthRes = await axios.get(
-        `https://api.twelvedata.com/time_series?interval=1month&apikey=a027c8e6ba294b0eae6c31c57fda393f&symbol=${symbol}
-      `
+        `https://api.twelvedata.com/time_series?interval=1month&apikey=${process.env.RAPIDAPI_TOKEN}&symbol=${symbol}`
       );
 
       const dayResponse = await axios.get(
-        `https://api.twelvedata.com/time_series?interval=1day&apikey=03123b25aa2f4028818b13c9ea66f3a2&symbol=${symbol}
-      `
+        `https://api.twelvedata.com/time_series?interval=1day&apikey=${process.env.TWELVEDATA_TOKEN}&symbol=${symbol}`
       );
       const hourRes = await axios.get(
-        `https://api.twelvedata.com/time_series?interval=1h&outputsize:24&apikey=03123b25aa2f4028818b13c9ea66f3a2&symbol=${symbol}
-        `
+        `https://api.twelvedata.com/time_series?interval=1h&outputsize:24&apikey=${process.env.TWELVEDATA_TOKEN}&symbol=${symbol}`
       );
 
       // console.log('MonthRes', monthRes.data);
@@ -263,7 +260,7 @@ const StockDetail = () => {
             }}
             className='filter-box'
           >
-            24h
+            Hour
           </div>
           <div
             onClick={() => onSelectFilter('1day')}
@@ -350,7 +347,7 @@ const StockDetail = () => {
 export default StockDetail
 
 // stock logo api
-// https://api.twelvedata.com/logo?symbol=msft&apikey=03123b25aa2f4028818b13c9ea66f3a2
+// https://api.twelvedata.com/logo?symbol=msft&apikey=${process.env.TWELVEDATA_TOKEN}
 
 // result
 
