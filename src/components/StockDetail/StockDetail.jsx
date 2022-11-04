@@ -263,7 +263,7 @@ const StockDetail = () => {
             }}
             className='filter-box'
           >
-            Hour
+            Days
           </div>
           <div
             onClick={() => onSelectFilter('1day')}
@@ -273,7 +273,7 @@ const StockDetail = () => {
             }}
             className='filter-box'
           >
-            Day
+            Months
           </div>
           <div
             onClick={() => onSelectFilter('1month')}
@@ -283,7 +283,7 @@ const StockDetail = () => {
             }}
             className='filter-box'
           >
-            Year
+            Years
           </div>
         </div>
       </div>
