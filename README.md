@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Wall Street Trade - US Stock Portfolio Tracker (Client)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application which allows user to add famous US stocks into the watchlist, track its financial data as well as price charts. 
 
-## Available Scripts
+## Technologies used:
 
-In the project directory, you can run:
+This project consist of 2 repositiories, the server(Backend) and client(Frontend). The technology comprises of the MERN stack: Mongoose, Express, React and NodeJS. Backend is deployed on Heroku, and Frontend is deployed on Vercel. This is the server repository. For more information on the server repository, click [here](https://github.com/jamesteogh/wstrade-server)!
 
-### `npm start`
+## New things that I learn during this project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Vercel 
+2. Yahoo Finance API using RapidAPI
+3. Axios
+4. Ant UI 
+5. Chart.js
+6. React toastify
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Challenges that I face during this project
 
-### `npm test`
+During the planning phase, I was ambitious and wanted many features to be included in the site. It got daunting until I broke down the objectives into smaller goals, and to focus on getting the MVP up first. There were some tech that I tried learning but unfortunately did not use as it is taking too much time from doing actual project such as Redux and Figma. Took me awhile to look for the right API but eventually decided on a few which I had fun playing around with. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project has a deadline of 3 weeks and I had to manage my time to fulfil other life commitments. I was away for 1 week plus to New York with my wife for both work and leisure, and coincidentally I had the chance to walk pass Wall Street and took a few touristy pictures with the famous charging bull. 
 
-### `npm run build`
+## Things that I will do more if I had more time
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Try out financial news live API to be deployed so as to value add the website
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Create a form that allows user to input, edit number of shares holdings so that personal portfolio can be tracked. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Explore using Figma for planning, Redux and Next.js for execution. 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Link
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Project Link - https://wstrade-client.vercel.app/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Backend Repository - https://github.com/jamesteogh/wstrade-server
+Frontend Repository - https://github.com/jamesteogh/wstrade-client
